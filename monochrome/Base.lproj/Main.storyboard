@@ -90,6 +90,9 @@
                                         <state key="normal" title="Connect with Facebook" image="facebook">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="connectWithFacebook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t8T-lm-uy6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <animations/>

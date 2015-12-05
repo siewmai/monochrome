@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
 
@@ -21,5 +23,20 @@ class LoginViewController: UIViewController {
         super.viewDidAppear(animated)
        // performSegueWithIdentifier("CreateProfile", sender: self)
         
+    }
+    
+    @IBAction func connectWithFacebook(sender: AnyObject) {
+        
+        let facebookLogin = FBSDKLoginManager()
+        facebookLogin.logInWithReadPermissions(["email", "public_profile", "user_friends"], fromViewController: self) { facebookResult, facebookErr in
+            if facebookErr != nil {
+                print("Facebook login failed. Error \(facebookErr)")
+            } else if facebookResult.isCancelled {
+                print("Facebook login was cancelled.")
+            } else {
+                let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
+                print("Successfully logged in with facebook. \(accessToken)")
+            }
+        }
     }
 }
