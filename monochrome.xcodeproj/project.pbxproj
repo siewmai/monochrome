@@ -14,7 +14,8 @@
 		2C683BA81C132D5C0061D53F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C683BA61C132D5C0061D53F /* LaunchScreen.storyboard */; };
 		2C683BB11C1352E00061D53F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BB01C1352E00061D53F /* LoginViewController.swift */; };
 		2C683BB41C1359930061D53F /* MonoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BB31C1359930061D53F /* MonoButton.swift */; };
-		2C683BB61C135A360061D53F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BB51C135A360061D53F /* Constants.swift */; };
+		2C683BB61C135A360061D53F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BB51C135A360061D53F /* Constant.swift */; };
+		2C683BBA1C13923B0061D53F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BB91C13923B0061D53F /* DataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +27,8 @@
 		2C683BA91C132D5C0061D53F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C683BB01C1352E00061D53F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2C683BB31C1359930061D53F /* MonoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonoButton.swift; sourceTree = "<group>"; };
-		2C683BB51C135A360061D53F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2C683BB51C135A360061D53F /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		2C683BB91C13923B0061D53F /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		6A5A6452D7E16B95FCDEBC96 /* Pods-monochrome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monochrome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-monochrome/Pods-monochrome.debug.xcconfig"; sourceTree = "<group>"; };
 		A9835AFC6910D2FFB83D734F /* Pods_monochrome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_monochrome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD926BCE67EB2116A487D90F /* Pods-monochrome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monochrome.release.xcconfig"; path = "Pods/Target Support Files/Pods-monochrome/Pods-monochrome.release.xcconfig"; sourceTree = "<group>"; };
@@ -74,7 +76,8 @@
 		2C683B9C1C132D5C0061D53F /* monochrome */ = {
 			isa = PBXGroup;
 			children = (
-				2C683BB71C135A440061D53F /* Utils */,
+				2C683BB81C1392280061D53F /* Service */,
+				2C683BB71C135A440061D53F /* Util */,
 				2C683BB21C13594C0061D53F /* View */,
 				2C683BAF1C1352A30061D53F /* Controller */,
 				2C683B9D1C132D5C0061D53F /* AppDelegate.swift */,
@@ -102,12 +105,20 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		2C683BB71C135A440061D53F /* Utils */ = {
+		2C683BB71C135A440061D53F /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				2C683BB51C135A360061D53F /* Constants.swift */,
+				2C683BB51C135A360061D53F /* Constant.swift */,
 			);
-			name = Utils;
+			name = Util;
+			sourceTree = "<group>";
+		};
+		2C683BB81C1392280061D53F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2C683BB91C13923B0061D53F /* DataService.swift */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 		9C51E35A6E4BE862E84802B9 /* Frameworks */ = {
@@ -240,10 +251,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C683BB61C135A360061D53F /* Constants.swift in Sources */,
+				2C683BB61C135A360061D53F /* Constant.swift in Sources */,
 				2C683BB41C1359930061D53F /* MonoButton.swift in Sources */,
 				2C683BB11C1352E00061D53F /* LoginViewController.swift in Sources */,
 				2C683B9E1C132D5C0061D53F /* AppDelegate.swift in Sources */,
+				2C683BBA1C13923B0061D53F /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

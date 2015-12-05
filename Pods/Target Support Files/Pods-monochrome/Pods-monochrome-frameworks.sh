@@ -88,10 +88,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-monochrome/FBSDKCoreKit.framework"
   install_framework "Pods-monochrome/FBSDKLoginKit.framework"
   install_framework "Pods-monochrome/FBSDKShareKit.framework"
+  install_framework "Pods-monochrome/Firebase.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-monochrome/Bolts.framework"
   install_framework "Pods-monochrome/FBSDKCoreKit.framework"
   install_framework "Pods-monochrome/FBSDKLoginKit.framework"
   install_framework "Pods-monochrome/FBSDKShareKit.framework"
+  install_framework "Pods-monochrome/Firebase.framework"
 fi
