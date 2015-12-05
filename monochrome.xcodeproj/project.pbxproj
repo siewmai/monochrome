@@ -16,6 +16,8 @@
 		2C683BB41C1359930061D53F /* MonoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BB31C1359930061D53F /* MonoButton.swift */; };
 		2C683BB61C135A360061D53F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BB51C135A360061D53F /* Constant.swift */; };
 		2C683BBA1C13923B0061D53F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BB91C13923B0061D53F /* DataService.swift */; };
+		2C683BBC1C13A0130061D53F /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BBB1C13A0130061D53F /* MessageService.swift */; };
+		2C683BBE1C13A49F0061D53F /* ActivityIndicatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BBD1C13A49F0061D53F /* ActivityIndicatorService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		2C683BB31C1359930061D53F /* MonoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonoButton.swift; sourceTree = "<group>"; };
 		2C683BB51C135A360061D53F /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		2C683BB91C13923B0061D53F /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		2C683BBB1C13A0130061D53F /* MessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
+		2C683BBD1C13A49F0061D53F /* ActivityIndicatorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorService.swift; sourceTree = "<group>"; };
 		6A5A6452D7E16B95FCDEBC96 /* Pods-monochrome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monochrome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-monochrome/Pods-monochrome.debug.xcconfig"; sourceTree = "<group>"; };
 		A9835AFC6910D2FFB83D734F /* Pods_monochrome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_monochrome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD926BCE67EB2116A487D90F /* Pods-monochrome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monochrome.release.xcconfig"; path = "Pods/Target Support Files/Pods-monochrome/Pods-monochrome.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				2C683BB91C13923B0061D53F /* DataService.swift */,
+				2C683BBB1C13A0130061D53F /* MessageService.swift */,
+				2C683BBD1C13A49F0061D53F /* ActivityIndicatorService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -252,7 +258,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C683BB61C135A360061D53F /* Constant.swift in Sources */,
+				2C683BBC1C13A0130061D53F /* MessageService.swift in Sources */,
 				2C683BB41C1359930061D53F /* MonoButton.swift in Sources */,
+				2C683BBE1C13A49F0061D53F /* ActivityIndicatorService.swift in Sources */,
 				2C683BB11C1352E00061D53F /* LoginViewController.swift in Sources */,
 				2C683B9E1C132D5C0061D53F /* AppDelegate.swift in Sources */,
 				2C683BBA1C13923B0061D53F /* DataService.swift in Sources */,

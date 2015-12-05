@@ -31,18 +31,18 @@ class LoginViewController: UIViewController {
         let facebookLogin = FBSDKLoginManager()
         facebookLogin.logInWithReadPermissions(["email", "public_profile", "user_friends"], fromViewController: self) { facebookResult, facebookErr in
             if facebookErr != nil {
-                print("Facebook login failed. Error \(facebookErr)")
+                MessageService.instance.showError(nil, message: "Facebook login failed", action: "Close", view: self)
             } else if facebookResult.isCancelled {
-                print("Facebook login was cancelled.")
+                MessageService.instance.showMessage(nil, message: "Facebook login was cancelled", action: "Close", view: self)
             } else {
+                ActivityIndicatorService.instance.show(self.view)
                 let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
-                print("Successfully logged in with facebook. \(accessToken)")
-                DataService.instance.REF_BASE.authWithOAuthProvider("facebook", token: accessToken,
-                    withCompletionBlock: { error, authData in
+                DataService.instance.REF_BASE.authWithOAuthProvider("facebook", token: accessToken, withCompletionBlock: { error, authData in
+                        ActivityIndicatorService.instance.hide()
                         if error != nil {
-                            print("Login failed. \(error)")
+                            MessageService.instance.showError(nil, message: "Unable to connect Monochrome", action: "Close", view: self)
                         } else {
-                            print("Logged in! \(authData)")
+                            MessageService.instance.showMessage(nil, message: "Logged In", action: "Close", view: self)
                         }
                 })
             }
