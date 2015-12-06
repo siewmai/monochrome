@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import AlamofireImage
 import SwiftValidator
 
 class CreateProfileTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate {
+    
+    var profile: Profile?
     
     @IBOutlet weak var nameField: MonoTextField!
     @IBOutlet weak var emailField: MonoTextField!
@@ -18,6 +21,7 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
     @IBOutlet weak var bioTextView: MonoTextView!
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var joinButton: MonoButton!
+    @IBOutlet weak var profileImage: UIImageView!
     
     let validator = Validator()
     
@@ -25,8 +29,21 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
         super.viewDidLoad()
         let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
+        
+        loadFacebookProfileImage()
+        nameField.text = profile?.displayName
+        emailField.text = profile?.email
     }
 
+    func loadFacebookProfileImage() {
+        if profile != nil {
+            let url = NSURL(string: profile!.imageUrl)!
+            let placeholderImage = UIImage(named: "person")!
+            
+            profileImage.af_setImageWithURL(url, placeholderImage: placeholderImage)
+        }
+    }
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }

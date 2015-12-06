@@ -84,6 +84,8 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-monochrome/Alamofire.framework"
+  install_framework "Pods-monochrome/AlamofireImage.framework"
   install_framework "Pods-monochrome/Bolts.framework"
   install_framework "Pods-monochrome/FBSDKCoreKit.framework"
   install_framework "Pods-monochrome/FBSDKLoginKit.framework"
@@ -92,6 +94,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-monochrome/SwiftValidator.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-monochrome/Alamofire.framework"
+  install_framework "Pods-monochrome/AlamofireImage.framework"
   install_framework "Pods-monochrome/Bolts.framework"
   install_framework "Pods-monochrome/FBSDKCoreKit.framework"
   install_framework "Pods-monochrome/FBSDKLoginKit.framework"

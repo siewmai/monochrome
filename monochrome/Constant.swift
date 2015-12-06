@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+// Keys
+let KEY_UID = "uid"
+
 // Color
 let COLOR_SHADOW: CGFloat = 157.0 / 255.0
 let COLOR_LIGHT: UIColor = UIColor(red: 204.0 / 255.0, green: 204.0 / 255.0, blue:204.0 / 255.0, alpha: 1.0)
