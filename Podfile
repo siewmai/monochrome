@@ -9,5 +9,6 @@ pod 'FBSDKCoreKit'
 pod 'FBSDKLoginKit'
 pod 'FBSDKShareKit'
 pod 'Firebase', '>= 2.4.3'
+pod 'SwiftValidator', '3.0.1'
 end
 

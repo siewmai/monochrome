@@ -18,6 +18,9 @@
 		2C683BBA1C13923B0061D53F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BB91C13923B0061D53F /* DataService.swift */; };
 		2C683BBC1C13A0130061D53F /* MessageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BBB1C13A0130061D53F /* MessageService.swift */; };
 		2C683BBE1C13A49F0061D53F /* ActivityIndicatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BBD1C13A49F0061D53F /* ActivityIndicatorService.swift */; };
+		2C683BC01C1471300061D53F /* CreateProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BBF1C1471300061D53F /* CreateProfileTableViewController.swift */; };
+		2C683BC31C1477390061D53F /* MonoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BC21C1477390061D53F /* MonoTextField.swift */; };
+		2CF055021C149D8E005DBB6A /* MonoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF055011C149D8E005DBB6A /* MonoTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		2C683BB91C13923B0061D53F /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		2C683BBB1C13A0130061D53F /* MessageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageService.swift; sourceTree = "<group>"; };
 		2C683BBD1C13A49F0061D53F /* ActivityIndicatorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorService.swift; sourceTree = "<group>"; };
+		2C683BBF1C1471300061D53F /* CreateProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileTableViewController.swift; sourceTree = "<group>"; };
+		2C683BC21C1477390061D53F /* MonoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonoTextField.swift; sourceTree = "<group>"; };
+		2CF055011C149D8E005DBB6A /* MonoTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonoTextView.swift; sourceTree = "<group>"; };
 		6A5A6452D7E16B95FCDEBC96 /* Pods-monochrome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monochrome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-monochrome/Pods-monochrome.debug.xcconfig"; sourceTree = "<group>"; };
 		A9835AFC6910D2FFB83D734F /* Pods_monochrome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_monochrome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD926BCE67EB2116A487D90F /* Pods-monochrome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monochrome.release.xcconfig"; path = "Pods/Target Support Files/Pods-monochrome/Pods-monochrome.release.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				2C683BB01C1352E00061D53F /* LoginViewController.swift */,
+				2C683BBF1C1471300061D53F /* CreateProfileTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -104,7 +111,9 @@
 		2C683BB21C13594C0061D53F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2C683BC21C1477390061D53F /* MonoTextField.swift */,
 				2C683BB31C1359930061D53F /* MonoButton.swift */,
+				2CF055011C149D8E005DBB6A /* MonoTextView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -259,9 +268,12 @@
 			files = (
 				2C683BB61C135A360061D53F /* Constant.swift in Sources */,
 				2C683BBC1C13A0130061D53F /* MessageService.swift in Sources */,
+				2C683BC31C1477390061D53F /* MonoTextField.swift in Sources */,
 				2C683BB41C1359930061D53F /* MonoButton.swift in Sources */,
+				2CF055021C149D8E005DBB6A /* MonoTextView.swift in Sources */,
 				2C683BBE1C13A49F0061D53F /* ActivityIndicatorService.swift in Sources */,
 				2C683BB11C1352E00061D53F /* LoginViewController.swift in Sources */,
+				2C683BC01C1471300061D53F /* CreateProfileTableViewController.swift in Sources */,
 				2C683B9E1C132D5C0061D53F /* AppDelegate.swift in Sources */,
 				2C683BBA1C13923B0061D53F /* DataService.swift in Sources */,
 			);
