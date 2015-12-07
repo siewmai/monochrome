@@ -16,7 +16,7 @@ class Profile {
     private var _email: String!
     private var _bikeAge: String!
     private var _bio: String!
-    private var _location: String!
+    private var _city: String!
     private var _imageUrl: String!
     
     var uid: String {
@@ -63,13 +63,13 @@ class Profile {
         }
     }
     
-    var location: String {
+    var city: String {
         get {
-            return _location
+            return _city
         }
         
         set {
-            _location = newValue
+            _city = newValue
         }
     }
     

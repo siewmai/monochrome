@@ -20,9 +20,12 @@
 		2C683BBE1C13A49F0061D53F /* ActivityIndicatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BBD1C13A49F0061D53F /* ActivityIndicatorService.swift */; };
 		2C683BC01C1471300061D53F /* CreateProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BBF1C1471300061D53F /* CreateProfileTableViewController.swift */; };
 		2C683BC31C1477390061D53F /* MonoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BC21C1477390061D53F /* MonoTextField.swift */; };
+		2C8FD0CE1C15FF5800C42B8A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8FD0CD1C15FF5800C42B8A /* Extension.swift */; };
 		2CF055021C149D8E005DBB6A /* MonoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF055011C149D8E005DBB6A /* MonoTextView.swift */; };
 		2CF055051C14BEFC005DBB6A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF055041C14BEFC005DBB6A /* Profile.swift */; };
 		2CF055071C14D3BF005DBB6A /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF055061C14D3BF005DBB6A /* ProfileImageView.swift */; };
+		2CF055091C15D25C005DBB6A /* CropOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF055081C15D25C005DBB6A /* CropOverlay.swift */; };
+		2CF0550B1C15DCD0005DBB6A /* CropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF0550A1C15DCD0005DBB6A /* CropViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,9 +43,12 @@
 		2C683BBD1C13A49F0061D53F /* ActivityIndicatorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorService.swift; sourceTree = "<group>"; };
 		2C683BBF1C1471300061D53F /* CreateProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileTableViewController.swift; sourceTree = "<group>"; };
 		2C683BC21C1477390061D53F /* MonoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonoTextField.swift; sourceTree = "<group>"; };
+		2C8FD0CD1C15FF5800C42B8A /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		2CF055011C149D8E005DBB6A /* MonoTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonoTextView.swift; sourceTree = "<group>"; };
 		2CF055041C14BEFC005DBB6A /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		2CF055061C14D3BF005DBB6A /* ProfileImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		2CF055081C15D25C005DBB6A /* CropOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropOverlay.swift; sourceTree = "<group>"; };
+		2CF0550A1C15DCD0005DBB6A /* CropViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CropViewController.swift; sourceTree = "<group>"; };
 		6A5A6452D7E16B95FCDEBC96 /* Pods-monochrome.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monochrome.debug.xcconfig"; path = "Pods/Target Support Files/Pods-monochrome/Pods-monochrome.debug.xcconfig"; sourceTree = "<group>"; };
 		A9835AFC6910D2FFB83D734F /* Pods_monochrome.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_monochrome.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD926BCE67EB2116A487D90F /* Pods-monochrome.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-monochrome.release.xcconfig"; path = "Pods/Target Support Files/Pods-monochrome/Pods-monochrome.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 			children = (
 				2C683BB01C1352E00061D53F /* LoginViewController.swift */,
 				2C683BBF1C1471300061D53F /* CreateProfileTableViewController.swift */,
+				2CF0550A1C15DCD0005DBB6A /* CropViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -116,6 +123,7 @@
 		2C683BB21C13594C0061D53F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2CF055081C15D25C005DBB6A /* CropOverlay.swift */,
 				2C683BC21C1477390061D53F /* MonoTextField.swift */,
 				2C683BB31C1359930061D53F /* MonoButton.swift */,
 				2CF055011C149D8E005DBB6A /* MonoTextView.swift */,
@@ -128,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				2C683BB51C135A360061D53F /* Constant.swift */,
+				2C8FD0CD1C15FF5800C42B8A /* Extension.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -286,8 +295,11 @@
 				2C683BC31C1477390061D53F /* MonoTextField.swift in Sources */,
 				2C683BB41C1359930061D53F /* MonoButton.swift in Sources */,
 				2CF055021C149D8E005DBB6A /* MonoTextView.swift in Sources */,
+				2CF0550B1C15DCD0005DBB6A /* CropViewController.swift in Sources */,
+				2C8FD0CE1C15FF5800C42B8A /* Extension.swift in Sources */,
 				2C683BBE1C13A49F0061D53F /* ActivityIndicatorService.swift in Sources */,
 				2C683BB11C1352E00061D53F /* LoginViewController.swift in Sources */,
+				2CF055091C15D25C005DBB6A /* CropOverlay.swift in Sources */,
 				2C683BC01C1471300061D53F /* CreateProfileTableViewController.swift in Sources */,
 				2CF055051C14BEFC005DBB6A /* Profile.swift in Sources */,
 				2C683B9E1C132D5C0061D53F /* AppDelegate.swift in Sources */,

@@ -65,7 +65,6 @@ import UIKit
     
     override func awakeFromNib() {
         layer.addSublayer(border)
-        layer.masksToBounds = true
         setNormalState()
     }
     

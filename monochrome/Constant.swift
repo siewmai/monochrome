@@ -9,8 +9,16 @@
 import Foundation
 import UIKit
 
+// Firebase
+let FIREBASE_URL = "https://mai-monochrome.firebaseio.com"
+
 // Keys
 let KEY_UID = "uid"
+
+// Segue
+let SEGUE_CREATE_PROFILE = "CreateProfile"
+let SEGUE_MAIN_CONTROLLER = "MainController"
+let SEGUE_CROP_IMAGE = "CropImage"
 
 // Color
 let COLOR_SHADOW: CGFloat = 157.0 / 255.0

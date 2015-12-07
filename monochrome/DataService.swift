@@ -9,8 +9,6 @@
 import Foundation
 import Firebase
 
-let FIREBASE_URL = "https://mai-monochrome.firebaseio.com"
-
 class DataService {
     static let instance = DataService()
     

@@ -22,8 +22,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-       // performSegueWithIdentifier("CreateProfile", sender: self)
-        
     }
     
     @IBAction func connectWithFacebook(sender: AnyObject) {
@@ -55,7 +53,7 @@ class LoginViewController: UIViewController {
                 self.createProfile(fbtoken, authData: authData)
             } else {
                 NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: KEY_UID)
-               // self.performSegueWithIdentifier(SEGUE_MAIN_CONTROLLER, sender: nil)
+                self.performSegueWithIdentifier(SEGUE_MAIN_CONTROLLER, sender: nil)
                 ActivityIndicatorService.instance.hide()
             }
         })
@@ -71,7 +69,7 @@ class LoginViewController: UIViewController {
             imageUrl = url // 100x100 by default
         }
         
-        let request = FBSDKGraphRequest(graphPath: "me/picture?redirect=false&type=large", parameters: nil, tokenString: fbtoken, version: nil, HTTPMethod: "GET")
+        let request = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["fields": "url", "redirect": false, "type": "large"], tokenString: fbtoken, version: nil, HTTPMethod: "GET")
         
         request.startWithCompletionHandler { connection, result, error in
             if error == nil {
