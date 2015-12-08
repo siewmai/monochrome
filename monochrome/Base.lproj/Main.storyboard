@@ -143,30 +143,55 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XfD-ls-QrJ" customClass="MonoTextField" customModule="monochrome" customModuleProvider="target">
-                                                    <rect key="frame" x="175" y="7" width="250" height="30"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJQ-75-cm3">
+                                                    <rect key="frame" x="175" y="6" width="250" height="32"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XfD-ls-QrJ" customClass="MonoTextField" customModule="monochrome" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="218" height="32"/>
+                                                            <animations/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="250" id="7yb-KI-p1P"/>
+                                                                <constraint firstAttribute="height" constant="30" id="FLG-1o-uls"/>
+                                                            </constraints>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="string" keyPath="icon" value="location"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="7yb-KI-p1P"/>
+                                                                    <exclude reference="FLG-1o-uls"/>
+                                                                </mask>
+                                                            </variation>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="URt-zp-Ls1" id="Gd0-Wl-Xx6"/>
+                                                            </connections>
+                                                        </textField>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1J-pA-KSW">
+                                                            <rect key="frame" x="218" y="0.0" width="32" height="32"/>
+                                                            <animations/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="32" id="Xes-Tl-qzy"/>
+                                                                <constraint firstAttribute="width" constant="32" id="zey-Ik-gGx"/>
+                                                            </constraints>
+                                                            <state key="normal" image="close-empty"/>
+                                                            <connections>
+                                                                <action selector="getCurrentCity:" destination="URt-zp-Ls1" eventType="touchUpInside" id="5hU-mN-QY3"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="250" id="7yb-KI-p1P"/>
-                                                        <constraint firstAttribute="height" constant="30" id="FLG-1o-uls"/>
+                                                        <constraint firstAttribute="width" constant="250" id="IdL-ru-UP0"/>
                                                     </constraints>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="icon" value="location"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="beginEditCity:" destination="URt-zp-Ls1" eventType="editingDidBegin" id="5NI-5D-VOq"/>
-                                                        <action selector="endEditCity:" destination="URt-zp-Ls1" eventType="editingDidEnd" id="N8F-WX-ADD"/>
-                                                        <outlet property="delegate" destination="URt-zp-Ls1" id="Gd0-Wl-Xx6"/>
-                                                    </connections>
-                                                </textField>
+                                                </stackView>
                                             </subviews>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstItem="XfD-ls-QrJ" firstAttribute="centerY" secondItem="S07-jB-6Pa" secondAttribute="centerY" id="5Fq-JZ-IZn"/>
-                                                <constraint firstItem="XfD-ls-QrJ" firstAttribute="centerX" secondItem="S07-jB-6Pa" secondAttribute="centerX" id="HWC-VH-nRA"/>
+                                                <constraint firstItem="YJQ-75-cm3" firstAttribute="centerY" secondItem="S07-jB-6Pa" secondAttribute="centerY" id="3dp-JN-dVW"/>
+                                                <constraint firstItem="YJQ-75-cm3" firstAttribute="centerX" secondItem="S07-jB-6Pa" secondAttribute="centerX" id="OCQ-aW-iO6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -319,6 +344,7 @@
                         <outlet property="bioTextView" destination="t81-ry-eN0" id="GUQ-pb-uhY"/>
                         <outlet property="cityField" destination="XfD-ls-QrJ" id="ap7-iQ-cwZ"/>
                         <outlet property="emailField" destination="Ykl-7O-DRT" id="NWK-hj-sqc"/>
+                        <outlet property="getCityButton" destination="e1J-pA-KSW" id="T2P-M4-H6y"/>
                         <outlet property="joinButton" destination="RN0-WF-O32" id="2Rq-IS-bnP"/>
                         <outlet property="nameField" destination="7iU-Zk-E6A" id="McA-po-eGp"/>
                         <outlet property="profileImage" destination="Hvo-mV-tq5" id="vGO-tW-tmM"/>
@@ -577,6 +603,7 @@
     </scenes>
     <resources>
         <image name="change-image" width="50" height="50"/>
+        <image name="close-empty" width="32" height="32"/>
         <image name="facebook" width="32" height="32"/>
         <image name="logo" width="64" height="64"/>
         <image name="person" width="100" height="100"/>

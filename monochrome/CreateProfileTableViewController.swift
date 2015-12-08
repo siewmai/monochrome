@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import CoreLocation
 import AlamofireImage
 import SwiftValidator
 
-class CreateProfileTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CropViewControllerDelegate {
+class CreateProfileTableViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate, CropViewControllerDelegate {
     
     var profile: Profile?
     
@@ -22,11 +23,19 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
     @IBOutlet weak var stepper: UIStepper!
     @IBOutlet weak var joinButton: MonoButton!
     @IBOutlet weak var profileImage: UIImageView!
-    
+    @IBOutlet weak var getCityButton: UIButton!
+
     let validator = Validator()
     let imagePicker = UIImagePickerController()
     var selectedImage: UIImage!
     
+    let navigate = UIImage(named: "navigate")
+    let close = UIImage(named: "close-empty")
+    let locationManager = CLLocationManager()
+    var requestingCity = false
+    var requestCitySuceeded = false
+    
+    // Override Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -38,6 +47,10 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
         
         imagePicker.delegate = self
         imagePicker.modalPresentationStyle = .FormSheet
+
+        locationManager.delegate = self
+        
+        getCityButton.setImage(navigate, forState: .Normal)
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -48,9 +61,22 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
         return 7
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == SEGUE_CROP_IMAGE {
+            if let controller = segue.destinationViewController.contentViewController as? CropViewController {
+                if let image = sender as? UIImage {
+                    controller.delegate = self
+                    controller.image = image
+                }
+            }
+        }
+    }
+
+    // Actions
     @IBAction func beginEditName(sender: MonoTextField) {
         sender.focusMe = true
         bikeAgeField.focusMe = false
+        cityField.focusMe = false
         
         validator.registerField(nameField, rules: [RequiredRule(), MinLengthRule(length: 6)])
     }
@@ -78,6 +104,7 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
     @IBAction func beginEditEmail(sender: MonoTextField) {
         sender.focusMe = true
         bikeAgeField.focusMe = false
+        cityField.focusMe = false
         
         validator.registerField(emailField, rules: [RequiredRule(), EmailRule()])
     }
@@ -101,17 +128,9 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
         joinButton.alpha = joinButton.enabled ? 1 : 0.8
     }
     
-    @IBAction func beginEditCity(sender: MonoTextField) {
-        sender.focusMe = true
-        bikeAgeField.focusMe = false
-    }
-    
-    @IBAction func endEditCity(sender: MonoTextField) {
-        sender.focusMe = false
-    }
-    
     @IBAction func stepperTriggered(sender: UIStepper) {
         self.view.endEditing(true)
+        cityField.focusMe = false
         bikeAgeField.focusMe = true
     }
     
@@ -164,21 +183,40 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
         presentViewController(options, animated: true, completion: nil)
     }
     
+    @IBAction func getCurrentCity(sender: AnyObject) {
+        self.view.endEditing(true)
+        bikeAgeField.focusMe = false
+        cityField.focusMe = true
+        
+        if requestCitySuceeded {
+            requestCitySuceeded = false
+            getCityButton.setImage(self.navigate, forState: .Normal)
+            cityField.text = ""
+        } else {
+            requestingCity = true
+            locationManager.requestWhenInUseAuthorization()
+            ActivityIndicatorService.instance.show(self.view)
+            locationManager.requestLocation()
+        }
+    }
+    
     @IBAction func join(sender: AnyObject) {
         if profile != nil {
             ActivityIndicatorService.instance.show(self.view)
             createProfile(profile!, image: profileImage.image) { uid in
-                ActivityIndicatorService.instance.hide()
                 if uid != nil {
                     NSUserDefaults.standardUserDefaults().setValue(uid, forKey: KEY_UID)
                     self.performSegueWithIdentifier(SEGUE_MAIN_CONTROLLER, sender: nil)
+                    ActivityIndicatorService.instance.hide()
                 } else {
+                    ActivityIndicatorService.instance.hide()
                     MessageService.instance.showError(nil, message: "An error occurred while creating account", action: "Close", view: self)
                 }
             }
         }
     }
     
+    // Delegates
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -198,6 +236,7 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
     
     func textViewDidBeginEditing(textView: UITextView) {
         bikeAgeField.focusMe = false
+        cityField.focusMe = false
         bioTextView.focusMe = true
     }
     
@@ -205,8 +244,50 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
         bioTextView.focusMe = false
     }
     
-    func dismissKeyboard(){
-        self.view.endEditing(true)
+    func locationManager(manager: CLLocationManager,
+        didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+            if(requestingCity && status == CLAuthorizationStatus.AuthorizedWhenInUse){
+                ActivityIndicatorService.instance.show(self.view)
+                locationManager.requestLocation()
+            }
+    }
+    
+    func locationManagerShouldDisplayHeadingCalibration(manager: CLLocationManager) -> Bool {
+        return true
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        failedToGetCity()
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        print(locations)
+        
+        if locations.count > 0 {
+            CLGeocoder().reverseGeocodeLocation(locations[0], completionHandler: { placemarks, error in
+                if placemarks?.count > 0 {
+                    let placemark = placemarks?.last
+                    var city = ""
+                    
+                    if let locality = placemark?.locality {
+                        city = locality
+                    }
+                    
+                    if let country = placemark?.country {
+                        city.appendContentsOf(", \(country)")
+                    }
+                    self.cityField.text = city
+                    self.getCityButton.setImage(self.close, forState: .Normal)
+                    self.requestingCity = false
+                    self.requestCitySuceeded = true
+                    ActivityIndicatorService.instance.hide()
+                } else {
+                    self.failedToGetCity()
+                }
+            })
+        } else {
+            failedToGetCity()
+        }
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
@@ -225,15 +306,9 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
         profileImage.image = image.resize(200)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == SEGUE_CROP_IMAGE {
-            if let controller = segue.destinationViewController.contentViewController as? CropViewController {
-                if let image = sender as? UIImage {
-                    controller.delegate = self
-                    controller.image = image
-                }
-            }
-        }
+    // Functions
+    func dismissKeyboard(){
+        self.view.endEditing(true)
     }
 
     func loadFacebookProfileImage() {
@@ -243,6 +318,11 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
             
             profileImage.af_setImageWithURL(url, placeholderImage: placeholderImage)
         }
+    }
+    
+    func failedToGetCity() {
+        ActivityIndicatorService.instance.hide()
+        MessageService.instance.showMessage("Failed to get location", message: "Please try again later", action: "OK", view: self)
     }
     
     func createProfile(profile: Profile, image: UIImage?, completion: (uid: String?) -> Void) {
