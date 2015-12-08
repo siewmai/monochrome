@@ -12,15 +12,18 @@ import FBSDKLoginKit
 import Firebase
 
 class LoginViewController: UIViewController {
+    
+    @IBOutlet weak var loginView: UIStackView!
 
     override func viewDidLoad() {
-        super.viewDidLoad()    }
+        super.viewDidLoad()
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
         if NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) != nil {
-            view.hidden = true
+            loginView.hidden = true
         }
     }
     
