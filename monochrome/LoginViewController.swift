@@ -18,12 +18,18 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+
+        if NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) != nil {
+            view.hidden = true
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-       // performSegueWithIdentifier("CreateProfile", sender: self)
         
+        if NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) != nil {
+            self.performSegueWithIdentifier(SEGUE_MAIN_CONTROLLER, sender: nil)
+        }
     }
     
     @IBAction func connectWithFacebook(sender: AnyObject) {
@@ -36,15 +42,65 @@ class LoginViewController: UIViewController {
                 MessageService.instance.showMessage(nil, message: "Facebook login was cancelled", action: "Close", view: self)
             } else {
                 ActivityIndicatorService.instance.show(self.view)
-                let accessToken = FBSDKAccessToken.currentAccessToken().tokenString
-                DataService.instance.REF_BASE.authWithOAuthProvider("facebook", token: accessToken, withCompletionBlock: { error, authData in
-                        ActivityIndicatorService.instance.hide()
+                let fbtoken = FBSDKAccessToken.currentAccessToken().tokenString
+                DataService.instance.REF_BASE.authWithOAuthProvider("facebook", token: fbtoken, withCompletionBlock: { error, authData in
                         if error != nil {
+                            ActivityIndicatorService.instance.hide()
                             MessageService.instance.showError(nil, message: "Unable to connect Monochrome", action: "Close", view: self)
                         } else {
-                            MessageService.instance.showMessage(nil, message: "Logged In", action: "Close", view: self)
+                            self.processLogin(fbtoken, authData: authData)
                         }
                 })
+            }
+        }
+    }
+    
+    func processLogin(fbtoken: String, authData: FAuthData) {
+        DataService.instance.REF_PROFILES.childByAppendingPath(authData.uid).observeSingleEventOfType(.Value, withBlock: { snapshot in
+            if snapshot.value is NSNull {
+                self.createProfile(fbtoken, authData: authData)
+            } else {
+                NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: KEY_UID)
+                self.performSegueWithIdentifier(SEGUE_MAIN_CONTROLLER, sender: nil)
+                ActivityIndicatorService.instance.hide()
+            }
+        })
+    }
+    
+    func createProfile(fbtoken: String, authData: FAuthData) {
+        let uid = authData.uid
+        let displayName = authData.providerData["displayName"] as! String
+        let email = authData.providerData["email"] as! String
+        var imageUrl = ""
+        
+        if let url = authData.providerData["profileImageURL"] as? String {
+            imageUrl = url // 100x100 by default
+        }
+        
+        let request = FBSDKGraphRequest(graphPath: "me/picture", parameters: ["fields": "url", "redirect": false, "type": "large"], tokenString: fbtoken, version: nil, HTTPMethod: "GET")
+        
+        request.startWithCompletionHandler { connection, result, error in
+            if error == nil {
+                if let data = result["data"] as? Dictionary<String, AnyObject> {
+                    if let url = data["url"] as? String {
+                        // Use 200x200 if succeed
+                        imageUrl = url
+                    }
+                }
+            }
+            
+            let profile = Profile(uid: uid, displayName: displayName, email: email, imageUrl: imageUrl)
+            self.performSegueWithIdentifier("CreateProfile", sender: profile)
+            ActivityIndicatorService.instance.hide()
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "CreateProfile" {
+            if let controller = segue.destinationViewController as? CreateProfileTableViewController {
+                if let profile = sender as? Profile {
+                    controller.profile = profile
+                }
             }
         }
     }

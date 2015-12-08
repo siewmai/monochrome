@@ -15,7 +15,7 @@ class MessageService {
     func showError(title: String?, message: String?, action: String?, view: UIViewController) {
         let alert = UIAlertController(title: title, message: message
             , preferredStyle: .Alert)
-        let action = UIAlertAction(title: action ?? "Close", style: .Default, handler: nil)
+        let action = UIAlertAction(title: action ?? "Close", style: .Cancel, handler: nil)
         alert.addAction(action)
         
         view.presentViewController(alert, animated: true, completion: nil)

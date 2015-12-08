@@ -15,9 +15,8 @@ class ActivityIndicatorService {
     var indicator = UIActivityIndicatorView()
     
     func show(view: UIView) {
-        
         if !indicator.isAnimating() {
-            indicator.frame = CGRectMake(0, 0, 100, 100)
+            indicator.frame = CGRectMake(0, 0, 50, 50)
             indicator.activityIndicatorViewStyle = .Gray
             indicator.center = view.center
             indicator.hidesWhenStopped = true
@@ -29,9 +28,10 @@ class ActivityIndicatorService {
     }
     
     func hide() {
-        indicator.stopAnimating()
-        indicator.removeFromSuperview()
-        UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        if indicator.isAnimating() {
+            indicator.stopAnimating()
+            indicator.removeFromSuperview()
+            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        }
     }
-
 }
