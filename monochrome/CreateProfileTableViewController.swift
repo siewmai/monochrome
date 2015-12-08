@@ -165,7 +165,18 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
     }
     
     @IBAction func join(sender: AnyObject) {
-        createProfile(profile?.imageUrl)
+        if profile != nil {
+            ActivityIndicatorService.instance.show(self.view)
+            createProfile(profile!, image: profileImage.image) { uid in
+                ActivityIndicatorService.instance.hide()
+                if uid != nil {
+                    NSUserDefaults.standardUserDefaults().setValue(uid, forKey: KEY_UID)
+                    self.performSegueWithIdentifier(SEGUE_MAIN_CONTROLLER, sender: nil)
+                } else {
+                    MessageService.instance.showError(nil, message: "An error occurred while creating account", action: "Close", view: self)
+                }
+            }
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -234,33 +245,43 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
         }
     }
     
-    func createProfile(imageUrl: String?) {
-        if profile != nil {
-            let city = (cityField.text == nil) ? "" : cityField.text!
-            let bio = bioTextView.text
-            let bikeAge = Int(stepper.value)
-            
-            var data: Dictionary<String, AnyObject> = [
-                "provider": profile!.provider,
-                "displayName": nameField.text!,
-                "email": emailField.text!,
-                "city": city,
-                "bikeAge":bikeAge,
-                "bio": bio
-            ]
-            
-            if imageUrl != nil {
-                data["imageUrl"] = imageUrl!
-            }
-            
-            DataService.instance.REF_PROFILES.childByAppendingPath(profile!.uid).setValue(data) { error, ref in
-                ActivityIndicatorService.instance.hide()
-                if (error != nil) {
-                    MessageService.instance.showError(nil, message: "An error occurred while creating account", action: "Close", view: self)
+    func createProfile(profile: Profile, image: UIImage?, completion: (uid: String?) -> Void) {
+        let city = (cityField.text == nil) ? "" : cityField.text!
+        let bio = bioTextView.text
+        let bikeAge = Int(stepper.value)
+        
+        let data: Dictionary<String, AnyObject> = [
+            "provider": profile.provider,
+            "displayName": nameField.text!,
+            "email": emailField.text!,
+            "city": city,
+            "bikeAge":bikeAge,
+            "bio": bio
+        ]
+        
+        DataService.instance.REF_PROFILES.childByAppendingPath(profile.uid).setValue(data) { error, ref in
+            ActivityIndicatorService.instance.hide()
+            if (error != nil) {
+                completion(uid: nil)
+            } else {
+                if image != nil {
+                    self.uploadProfileImage(ref.key, image: image!, completion: { imageKey in
+                        ref.updateChildValues(["image": imageKey])
+                        completion(uid: ref.key)
+                    })
                 } else {
-                    NSUserDefaults.standardUserDefaults().setValue(self.profile!.uid, forKey: KEY_UID)
+                    completion(uid: ref.key)
                 }
             }
         }
+    }
+    
+    func uploadProfileImage(uid: String, image:UIImage, completion: (imageKey: String)-> Void) {
+        let imageRef = DataService.instance.REF_IMAGES.childByAutoId()
+        let imageData = UIImageJPEGRepresentation(image, 1)
+        AmazonS3Service.instance.uploadImageData(imageData!, folderName: uid, fileName: imageRef.key, completion: { nsurl in
+                imageRef.setValue(["url": nsurl.URLString, "owner": uid, "timestamp": DataService.instance.TIMESTAMP])
+            completion(imageKey: imageRef.key)
+        })
     }
 }

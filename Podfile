@@ -12,5 +12,6 @@ pod 'Alamofire', '~> 3.0'
 pod 'AlamofireImage', '~> 2.0'
 pod 'Firebase', '>= 2.4.3'
 pod 'SwiftValidator', '3.0.1'
+pod 'AmazonS3RequestManager', '~> 0.8'
 end
 

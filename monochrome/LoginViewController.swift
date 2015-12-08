@@ -18,10 +18,18 @@ class LoginViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+
+        if NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) != nil {
+            view.hidden = true
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) != nil {
+            self.performSegueWithIdentifier(SEGUE_MAIN_CONTROLLER, sender: nil)
+        }
     }
     
     @IBAction func connectWithFacebook(sender: AnyObject) {

@@ -14,6 +14,7 @@ class DataService {
     
     private var _REF_BASE = Firebase(url: "\(FIREBASE_URL)")
     private var _REF_PROFILES = Firebase(url: "\(FIREBASE_URL)/profiles")
+    private var _REF_IMAGES = Firebase(url: "\(FIREBASE_URL)/images")
     
     var REF_BASE: Firebase {
         return _REF_BASE
@@ -21,5 +22,13 @@ class DataService {
     
     var REF_PROFILES: Firebase {
         return _REF_PROFILES
+    }
+    
+    var REF_IMAGES: Firebase {
+        return _REF_IMAGES
+    }
+    
+    var TIMESTAMP: [NSObject : AnyObject] {
+        return FirebaseServerValue.timestamp()
     }
 }

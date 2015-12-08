@@ -20,6 +20,7 @@
 		2C683BBE1C13A49F0061D53F /* ActivityIndicatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BBD1C13A49F0061D53F /* ActivityIndicatorService.swift */; };
 		2C683BC01C1471300061D53F /* CreateProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BBF1C1471300061D53F /* CreateProfileTableViewController.swift */; };
 		2C683BC31C1477390061D53F /* MonoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683BC21C1477390061D53F /* MonoTextField.swift */; };
+		2C6A41771C17260D00C91A34 /* AmazonS3Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6A41761C17260D00C91A34 /* AmazonS3Service.swift */; };
 		2C8FD0CE1C15FF5800C42B8A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8FD0CD1C15FF5800C42B8A /* Extension.swift */; };
 		2CF055021C149D8E005DBB6A /* MonoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF055011C149D8E005DBB6A /* MonoTextView.swift */; };
 		2CF055051C14BEFC005DBB6A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF055041C14BEFC005DBB6A /* Profile.swift */; };
@@ -43,6 +44,7 @@
 		2C683BBD1C13A49F0061D53F /* ActivityIndicatorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorService.swift; sourceTree = "<group>"; };
 		2C683BBF1C1471300061D53F /* CreateProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileTableViewController.swift; sourceTree = "<group>"; };
 		2C683BC21C1477390061D53F /* MonoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonoTextField.swift; sourceTree = "<group>"; };
+		2C6A41761C17260D00C91A34 /* AmazonS3Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmazonS3Service.swift; sourceTree = "<group>"; };
 		2C8FD0CD1C15FF5800C42B8A /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		2CF055011C149D8E005DBB6A /* MonoTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonoTextView.swift; sourceTree = "<group>"; };
 		2CF055041C14BEFC005DBB6A /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				2C683BB91C13923B0061D53F /* DataService.swift */,
 				2C683BBB1C13A0130061D53F /* MessageService.swift */,
 				2C683BBD1C13A49F0061D53F /* ActivityIndicatorService.swift */,
+				2C6A41761C17260D00C91A34 /* AmazonS3Service.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				2CF055091C15D25C005DBB6A /* CropOverlay.swift in Sources */,
 				2C683BC01C1471300061D53F /* CreateProfileTableViewController.swift in Sources */,
 				2CF055051C14BEFC005DBB6A /* Profile.swift in Sources */,
+				2C6A41771C17260D00C91A34 /* AmazonS3Service.swift in Sources */,
 				2C683B9E1C132D5C0061D53F /* AppDelegate.swift in Sources */,
 				2C683BBA1C13923B0061D53F /* DataService.swift in Sources */,
 			);
