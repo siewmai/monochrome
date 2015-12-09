@@ -740,7 +740,9 @@
                                                                         <constraint firstAttribute="trailing" secondItem="AH7-ma-3mr" secondAttribute="trailing" constant="10" id="182-OD-Msz"/>
                                                                         <constraint firstAttribute="bottom" secondItem="AH7-ma-3mr" secondAttribute="bottom" constant="10" id="4KR-4D-ScL"/>
                                                                         <constraint firstItem="cJG-y0-YcG" firstAttribute="leading" secondItem="Q1L-gQ-koP" secondAttribute="leading" id="A4u-hE-By4"/>
-                                                                        <constraint firstAttribute="height" constant="250" id="NHZ-Ws-CuL"/>
+                                                                        <constraint firstAttribute="height" constant="250" id="NHZ-Ws-CuL">
+                                                                            <variation key="heightClass=regular-widthClass=regular" constant="320"/>
+                                                                        </constraint>
                                                                         <constraint firstItem="cJG-y0-YcG" firstAttribute="top" secondItem="Q1L-gQ-koP" secondAttribute="top" id="X2w-bu-dZi"/>
                                                                         <constraint firstAttribute="height" constant="250" id="f1R-b8-SUI"/>
                                                                         <constraint firstAttribute="trailing" secondItem="cJG-y0-YcG" secondAttribute="trailing" id="gyZ-sq-cAn"/>
@@ -802,15 +804,24 @@
                                                                 </stackView>
                                                             </subviews>
                                                             <animations/>
+                                                            <variation key="heightClass=regular-widthClass=regular" spacing="20"/>
                                                         </stackView>
                                                     </subviews>
                                                     <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="YD2-Qq-fwh" secondAttribute="trailing" constant="20" id="GGf-c6-7dn"/>
-                                                        <constraint firstItem="YD2-Qq-fwh" firstAttribute="leading" secondItem="fIb-Wf-4cQ" secondAttribute="leading" constant="20" id="Lu4-Cf-z9u"/>
-                                                        <constraint firstAttribute="bottom" secondItem="YD2-Qq-fwh" secondAttribute="bottom" constant="8" id="Vel-Uo-dOh"/>
-                                                        <constraint firstItem="YD2-Qq-fwh" firstAttribute="top" secondItem="fIb-Wf-4cQ" secondAttribute="top" constant="8" id="jvl-8y-5YE"/>
+                                                        <constraint firstAttribute="trailing" secondItem="YD2-Qq-fwh" secondAttribute="trailing" constant="20" id="GGf-c6-7dn">
+                                                            <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                                        </constraint>
+                                                        <constraint firstItem="YD2-Qq-fwh" firstAttribute="leading" secondItem="fIb-Wf-4cQ" secondAttribute="leading" constant="20" id="Lu4-Cf-z9u">
+                                                            <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                                        </constraint>
+                                                        <constraint firstAttribute="bottom" secondItem="YD2-Qq-fwh" secondAttribute="bottom" constant="8" id="Vel-Uo-dOh">
+                                                            <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                                                        </constraint>
+                                                        <constraint firstItem="YD2-Qq-fwh" firstAttribute="top" secondItem="fIb-Wf-4cQ" secondAttribute="top" constant="8" id="jvl-8y-5YE">
+                                                            <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                                                        </constraint>
                                                     </constraints>
                                                 </view>
                                             </subviews>

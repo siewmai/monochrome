@@ -12,7 +12,6 @@ import AFDateHelper
 
 class PostTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var creatorImageView: ProfileImageView!
     @IBOutlet weak var creatorNameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
@@ -62,9 +61,7 @@ class PostTableViewCell: UITableViewCell {
                     self.numberOfPictureView.hidden = false
                 }
             })
-            
         }
-
     }
     
     override func prepareForReuse() {
