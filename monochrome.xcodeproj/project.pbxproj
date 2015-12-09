@@ -10,6 +10,8 @@
 		2AC6A21B2846014396EC27D2 /* Pods_monochrome.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9835AFC6910D2FFB83D734F /* Pods_monochrome.framework */; };
 		2C07E3941C17827300668880 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C07E3931C17827300668880 /* Config.swift */; };
 		2C07E3961C178D3F00668880 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C07E3951C178D3F00668880 /* HomeViewController.swift */; };
+		2C07E39C1C179EA800668880 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C07E39B1C179EA800668880 /* PostTableViewCell.swift */; };
+		2C07E39E1C179F1600668880 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C07E39D1C179F1600668880 /* PostView.swift */; };
 		2C683B9E1C132D5C0061D53F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C683B9D1C132D5C0061D53F /* AppDelegate.swift */; };
 		2C683BA31C132D5C0061D53F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C683BA11C132D5C0061D53F /* Main.storyboard */; };
 		2C683BA51C132D5C0061D53F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C683BA41C132D5C0061D53F /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 /* Begin PBXFileReference section */
 		2C07E3931C17827300668880 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		2C07E3951C178D3F00668880 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2C07E39B1C179EA800668880 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		2C07E39D1C179F1600668880 /* PostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		2C683B9A1C132D5C0061D53F /* monochrome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = monochrome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C683B9D1C132D5C0061D53F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C683BA21C132D5C0061D53F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,6 +83,15 @@
 				FD926BCE67EB2116A487D90F /* Pods-monochrome.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		2C07E39A1C179E9100668880 /* PostTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2C07E39B1C179EA800668880 /* PostTableViewCell.swift */,
+				2C07E39D1C179F1600668880 /* PostView.swift */,
+			);
+			name = PostTableViewCell;
 			sourceTree = "<group>";
 		};
 		2C683B911C132D5C0061D53F = {
@@ -130,6 +143,7 @@
 		2C683BB21C13594C0061D53F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2C07E39A1C179E9100668880 /* PostTableViewCell */,
 				2CF055081C15D25C005DBB6A /* CropOverlay.swift */,
 				2C683BC21C1477390061D53F /* MonoTextField.swift */,
 				2C683BB31C1359930061D53F /* MonoButton.swift */,
@@ -303,6 +317,7 @@
 				2C683BBC1C13A0130061D53F /* MessageService.swift in Sources */,
 				2C683BC31C1477390061D53F /* MonoTextField.swift in Sources */,
 				2C07E3941C17827300668880 /* Config.swift in Sources */,
+				2C07E39C1C179EA800668880 /* PostTableViewCell.swift in Sources */,
 				2C07E3961C178D3F00668880 /* HomeViewController.swift in Sources */,
 				2C683BB41C1359930061D53F /* MonoButton.swift in Sources */,
 				2CF055021C149D8E005DBB6A /* MonoTextView.swift in Sources */,
@@ -315,6 +330,7 @@
 				2CF055051C14BEFC005DBB6A /* Profile.swift in Sources */,
 				2C6A41771C17260D00C91A34 /* AmazonS3Service.swift in Sources */,
 				2C683B9E1C132D5C0061D53F /* AppDelegate.swift in Sources */,
+				2C07E39E1C179F1600668880 /* PostView.swift in Sources */,
 				2C683BBA1C13923B0061D53F /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
