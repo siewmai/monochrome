@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
             } else if facebookResult.isCancelled {
                 MessageService.instance.showMessage(nil, message: "Facebook login was cancelled", action: "Close", view: self)
             } else {
-                ActivityIndicatorService.instance.show(self.view)
+                ActivityIndicatorService.instance.show(self.view, ignoreInteraction: true)
                 let fbtoken = FBSDKAccessToken.currentAccessToken().tokenString
                 DataService.instance.REF_BASE.authWithOAuthProvider("facebook", token: fbtoken, withCompletionBlock: { error, authData in
                         if error != nil {

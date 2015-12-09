@@ -14,7 +14,7 @@ class ActivityIndicatorService {
     
     var indicator = UIActivityIndicatorView()
     
-    func show(view: UIView) {
+    func show(view: UIView, ignoreInteraction: Bool) {
         if !indicator.isAnimating() {
             indicator.frame = CGRectMake(0, 0, 50, 50)
             indicator.activityIndicatorViewStyle = .Gray
@@ -23,7 +23,10 @@ class ActivityIndicatorService {
             
             view.addSubview(indicator)
             indicator.startAnimating()
-            UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+            
+            if ignoreInteraction {
+                UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+            }
         }
     }
     
@@ -31,7 +34,9 @@ class ActivityIndicatorService {
         if indicator.isAnimating() {
             indicator.stopAnimating()
             indicator.removeFromSuperview()
-            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            if UIApplication.sharedApplication().isIgnoringInteractionEvents() {
+                 UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            }
         }
     }
 }

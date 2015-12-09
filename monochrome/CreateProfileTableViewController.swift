@@ -195,14 +195,14 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
         } else {
             requestingCity = true
             locationManager.requestWhenInUseAuthorization()
-            ActivityIndicatorService.instance.show(self.view)
+            ActivityIndicatorService.instance.show(cityField, ignoreInteraction: false)
             locationManager.requestLocation()
         }
     }
     
     @IBAction func join(sender: AnyObject) {
         if profile != nil {
-            ActivityIndicatorService.instance.show(self.view)
+            ActivityIndicatorService.instance.show(self.view, ignoreInteraction: true)
             createProfile(profile!, image: profileImage.image) { uid in
                 if uid != nil {
                     NSUserDefaults.standardUserDefaults().setValue(uid, forKey: KEY_UID)
@@ -247,7 +247,7 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
     func locationManager(manager: CLLocationManager,
         didChangeAuthorizationStatus status: CLAuthorizationStatus) {
             if(requestingCity && status == CLAuthorizationStatus.AuthorizedWhenInUse){
-                ActivityIndicatorService.instance.show(self.view)
+                ActivityIndicatorService.instance.show(cityField, ignoreInteraction: false)
                 locationManager.requestLocation()
             }
     }
@@ -340,13 +340,13 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
         ]
         
         DataService.instance.REF_PROFILES.childByAppendingPath(profile.uid).setValue(data) { error, ref in
-            ActivityIndicatorService.instance.hide()
             if (error != nil) {
                 completion(uid: nil)
             } else {
                 if image != nil {
-                    self.uploadProfileImage(ref.key, image: image!, completion: { imageKey in
-                        ref.updateChildValues(["image": imageKey])
+                    let imageData = UIImageJPEGRepresentation(image!, 1)
+                    AmazonS3Service.instance.uploadImageData(imageData!, folderName: profile.uid, fileName: profile.uid, completion: { nsurl in
+                        ref.updateChildValues(["imageUrl": nsurl.URLString])
                         completion(uid: ref.key)
                     })
                 } else {
@@ -354,14 +354,5 @@ class CreateProfileTableViewController: UITableViewController, UITextFieldDelega
                 }
             }
         }
-    }
-    
-    func uploadProfileImage(uid: String, image:UIImage, completion: (imageKey: String)-> Void) {
-        let imageRef = DataService.instance.REF_IMAGES.childByAutoId()
-        let imageData = UIImageJPEGRepresentation(image, 1)
-        AmazonS3Service.instance.uploadImageData(imageData!, folderName: uid, fileName: imageRef.key, completion: { nsurl in
-                imageRef.setValue(["url": nsurl.URLString, "owner": uid, "timestamp": DataService.instance.TIMESTAMP])
-            completion(imageKey: imageRef.key)
-        })
     }
 }
