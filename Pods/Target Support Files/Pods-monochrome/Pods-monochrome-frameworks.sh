@@ -84,6 +84,7 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-monochrome/AFDateHelper.framework"
   install_framework "Pods-monochrome/Alamofire.framework"
   install_framework "Pods-monochrome/AlamofireImage.framework"
   install_framework "Pods-monochrome/AmazonS3RequestManager.framework"
@@ -96,6 +97,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-monochrome/SwiftValidator.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-monochrome/AFDateHelper.framework"
   install_framework "Pods-monochrome/Alamofire.framework"
   install_framework "Pods-monochrome/AlamofireImage.framework"
   install_framework "Pods-monochrome/AmazonS3RequestManager.framework"

@@ -619,7 +619,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yJ9-WJ-MVT">
                                                                     <rect key="frame" x="0.0" y="0.0" width="560" height="53"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="HSX-Pk-gF1">
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="HSX-Pk-gF1" customClass="ProfileImageView" customModule="monochrome" customModuleProvider="target">
                                                                             <rect key="frame" x="0.0" y="1" width="50" height="50"/>
                                                                             <animations/>
                                                                             <constraints>
@@ -637,8 +637,8 @@
                                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@Taipei, Taiwan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gut-ia-jM8">
-                                                                                    <rect key="frame" x="0.0" y="22" width="468" height="14.5"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today, 8.30 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gut-ia-jM8">
+                                                                                    <rect key="frame" x="0.0" y="22" width="468" height="15"/>
                                                                                     <animations/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -668,7 +668,7 @@
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1L-gQ-koP">
                                                                     <rect key="frame" x="0.0" y="86" width="560" height="250"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-portrait" translatesAutoresizingMaskIntoConstraints="NO" id="cJG-y0-YcG">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image-lanscape" translatesAutoresizingMaskIntoConstraints="NO" id="cJG-y0-YcG">
                                                                             <rect key="frame" x="0.0" y="0.0" width="560" height="250"/>
                                                                             <animations/>
                                                                             <constraints>
@@ -682,7 +682,7 @@
                                                                                 </mask>
                                                                             </variation>
                                                                         </imageView>
-                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AH7-ma-3mr">
+                                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AH7-ma-3mr">
                                                                             <rect key="frame" x="518" y="208" width="32" height="32"/>
                                                                             <subviews>
                                                                                 <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n4F-a7-4st">
@@ -824,6 +824,16 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="creatorImageView" destination="HSX-Pk-gF1" id="ZhK-6z-J2u"/>
+                                            <outlet property="creatorNameLabel" destination="P0u-FS-sdh" id="4Kp-t3-Abw"/>
+                                            <outlet property="numberOfPictureLabel" destination="Pc0-rR-vva" id="ALl-PW-wYt"/>
+                                            <outlet property="numberOfPictureView" destination="AH7-ma-3mr" id="zDU-hb-p5O"/>
+                                            <outlet property="pictureContainerView" destination="Q1L-gQ-koP" id="OJ0-ot-Re3"/>
+                                            <outlet property="pictureImageView" destination="cJG-y0-YcG" id="fe6-7O-G8Y"/>
+                                            <outlet property="statusLabel" destination="Hep-mu-cXe" id="ZB0-bD-k0t"/>
+                                            <outlet property="timestampLabel" destination="Gut-ia-jM8" id="gfp-bb-ets"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -945,11 +955,11 @@
         <image name="gear-outline" width="32" height="32"/>
         <image name="home" width="32" height="32"/>
         <image name="home-outline" width="32" height="32"/>
+        <image name="image-lanscape" width="736" height="490"/>
         <image name="like-outline" width="32" height="32"/>
         <image name="logo" width="64" height="64"/>
         <image name="more" width="32" height="32"/>
         <image name="person" width="100" height="100"/>
-        <image name="placeholder-portrait" width="600" height="800"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="mun-Yt-X3a"/>

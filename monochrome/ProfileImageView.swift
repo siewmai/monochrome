@@ -11,6 +11,7 @@ import UIKit
 class ProfileImageView: UIImageView {
 
     override func awakeFromNib() {
+        super.awakeFromNib()
         layer.cornerRadius = frame.size.width / 2
         clipsToBounds = true
     }

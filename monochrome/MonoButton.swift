@@ -11,6 +11,7 @@ import UIKit
 @IBDesignable class MonoButton: UIButton {
 
     override func awakeFromNib() {
+        super.awakeFromNib()
         layer.cornerRadius = 2.0
         layer.shadowColor = UIColor(red: COLOR_SHADOW, green: COLOR_SHADOW, blue: COLOR_SHADOW, alpha: 0.5).CGColor
         layer.shadowOpacity = 0.8

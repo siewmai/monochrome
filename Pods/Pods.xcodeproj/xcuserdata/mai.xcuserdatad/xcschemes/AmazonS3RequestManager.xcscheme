@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '714FDFEEAA4072D60EB955EF'
+               BlueprintIdentifier = 'F58FC7F020E51FF86B85C8C7'
                BlueprintName = 'AmazonS3RequestManager'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'AmazonS3RequestManager.framework'>
